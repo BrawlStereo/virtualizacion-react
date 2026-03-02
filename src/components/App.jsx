@@ -1,5 +1,5 @@
 import './App.css'
-import Page from './components/Page.jsx'
+import Page from './Page.jsx'
 
 function App() {
     return (
