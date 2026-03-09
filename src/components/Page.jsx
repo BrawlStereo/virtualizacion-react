@@ -1,27 +1,23 @@
-import { useState } from 'react'
-import React from 'react'
-
-// React.memo para detectar variable que no cambia
-const Texto = React.memo(({ contenido }) => {
-    console.log(`Soy ${contenido}`);
-    return <p>{contenido}</p>;
-});
+import { useState, useCallback } from 'react'
+import Hijo from './Hijo'
 
 export default function Page() {
   const [count, setCount] = useState(0)
+
+  const increment = useCallback(() => setCount(c => c + 1), []);
 
   return (
     <div>
       <label>Contador: {count}</label>
       <br />
-      <button onClick={() => setCount(count +1 )}>
+      <button onClick={increment}>
         Incrementar
       </button>
 
       <div>
-        <Texto contenido="Texto 1" />
-        <Texto contenido="Texto 2" />
-        <Texto contenido="Texto 3" />
+        <Hijo contenido="Texto 1" />
+        <Hijo contenido="Texto 2" />
+        <Hijo contenido="Texto 3" />
       </div>
     </div>
   );
